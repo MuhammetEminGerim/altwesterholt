@@ -329,6 +329,13 @@
 </header>
 
 <style id="floating-mega-header-styles">
+  /* Completely hide underlying Framer navbar */
+  .framer-1feb613-container,
+  nav.framer-16ynneq,
+  .framer-l73jg3 {
+    display: none !important;
+  }
+
   /* Reset and Root positioning */
   #floating-mega-header {
     position: fixed;
@@ -338,39 +345,50 @@
     z-index: 99999;
     display: flex;
     justify-content: center;
-  /* Completely hide underlying Framer navbar */
-  .framer-1feb613-container,
-  nav.framer-16ynneq,
-  .framer-l73jg3 {
-    display: none !important;
-  }
-
     padding: 0 20px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
   }
 
+  /* Default Top State: Fully Transparent Pill */
   .mega-pill-container {
     width: 100%;
     max-width: 1120px;
     height: 64px;
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(28px) saturate(190%);
-    -webkit-backdrop-filter: blur(28px) saturate(190%);
-    border: 1px solid rgba(255, 255, 255, 0.40);
+    background: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 40px;
-    box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.20), inset 0 1px 1px 0 rgba(255, 255, 255, 0.7);
+    box-shadow: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 6px 12px 6px 28px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                -webkit-backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .mega-pill-container:hover {
-    background: rgba(255, 255, 255, 0.32);
-    box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.25), inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
   }
 
-  
+  /* Scrolled State: Frosted Glass & Blur */
+  #floating-mega-header.scrolled .mega-pill-container,
+  #floating-mega-header.always-scrolled .mega-pill-container {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.16), 0 2px 10px -2px rgba(0, 0, 0, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+  }
+  #floating-mega-header.scrolled .mega-pill-container:hover,
+  #floating-mega-header.always-scrolled .mega-pill-container:hover {
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.20), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  }
 
   /* Brand Logo */
   .mega-brand {
@@ -384,16 +402,31 @@
     font-size: 1.05rem;
     font-weight: 800;
     letter-spacing: 0.16em;
-    color: #111;
+    color: #ffffff;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
     text-transform: uppercase;
+    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .brand-sub {
     font-size: 0.58rem;
     font-weight: 600;
     letter-spacing: 0.12em;
-    color: #777;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
     text-transform: uppercase;
     margin-top: 1px;
+    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #floating-mega-header.scrolled .brand-title,
+  #floating-mega-header.always-scrolled .brand-title {
+    color: #111111;
+    text-shadow: none;
+  }
+  #floating-mega-header.scrolled .brand-sub,
+  #floating-mega-header.always-scrolled .brand-sub {
+    color: #777777;
+    text-shadow: none;
   }
 
   /* Desktop Nav */
@@ -414,24 +447,44 @@
     padding: 9px 15px;
     font-size: 0.92rem;
     font-weight: 500;
-    color: #222;
+    color: #ffffff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     text-decoration: none;
     border-radius: 20px;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .mega-link:hover {
-    color: #000;
-    background: rgba(0, 0, 0, 0.05);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.18);
   }
   .chevron-icon {
     width: 13px;
     height: 13px;
-    color: #777;
-    transition: transform 0.25s ease;
+    color: rgba(255, 255, 255, 0.85);
+    transition: transform 0.25s ease, color 0.25s ease;
   }
   .has-dropdown:hover .chevron-icon {
     transform: rotate(180deg);
-    color: #111;
+    color: #ffffff;
+  }
+
+  #floating-mega-header.scrolled .mega-link,
+  #floating-mega-header.always-scrolled .mega-link {
+    color: #222222;
+    text-shadow: none;
+  }
+  #floating-mega-header.scrolled .mega-link:hover,
+  #floating-mega-header.always-scrolled .mega-link:hover {
+    color: #000000;
+    background: rgba(0, 0, 0, 0.05);
+  }
+  #floating-mega-header.scrolled .chevron-icon,
+  #floating-mega-header.always-scrolled .chevron-icon {
+    color: #777777;
+  }
+  #floating-mega-header.scrolled .has-dropdown:hover .chevron-icon,
+  #floating-mega-header.always-scrolled .has-dropdown:hover .chevron-icon {
+    color: #111111;
   }
 
   /* Dropdown Styles */
@@ -440,13 +493,12 @@
     top: calc(100% + 14px);
     left: 50%;
     transform: translateX(-50%) translateY(8px);
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.65);
-    box-shadow: 0 24px 54px -10px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 24px;
-    box-shadow: 0 24px 54px -10px rgba(0, 0, 0, 0.2), 0 4px 12px -2px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 24px 54px -10px rgba(0, 0, 0, 0.18), 0 4px 12px -2px rgba(0, 0, 0, 0.06);
     padding: 22px;
     opacity: 0;
     visibility: hidden;
@@ -588,36 +640,59 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    color: #333;
+    color: #ffffff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
     font-size: 0.84rem;
     font-weight: 600;
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 20px;
-    transition: background 0.2s;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .mega-phone-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: #000;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
   }
+  #floating-mega-header.scrolled .mega-phone-btn,
+  #floating-mega-header.always-scrolled .mega-phone-btn {
+    color: #333333;
+    text-shadow: none;
+  }
+  #floating-mega-header.scrolled .mega-phone-btn:hover,
+  #floating-mega-header.always-scrolled .mega-phone-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #000000;
+  }
+
   .mega-cta-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #111;
-    color: #fff !important;
+    background: #ffffff;
+    color: #111111 !important;
     text-decoration: none;
     font-size: 0.86rem;
     font-weight: 600;
     padding: 11px 22px;
     border-radius: 28px;
     letter-spacing: 0.02em;
-    transition: all 0.25s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
   }
   .mega-cta-btn:hover {
-    background: #2a2a2a;
+    background: rgba(255, 255, 255, 0.92);
     transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  }
+  #floating-mega-header.scrolled .mega-cta-btn,
+  #floating-mega-header.always-scrolled .mega-cta-btn {
+    background: #111111;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  #floating-mega-header.scrolled .mega-cta-btn:hover,
+  #floating-mega-header.always-scrolled .mega-cta-btn:hover {
+    background: #2a2a2a;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
   }
 
@@ -637,9 +712,15 @@
     display: block;
     width: 100%;
     height: 2px;
-    background: #111;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     border-radius: 2px;
-    transition: all 0.25s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #floating-mega-header.scrolled #mega-mobile-toggle span,
+  #floating-mega-header.always-scrolled #mega-mobile-toggle span {
+    background: #111111;
+    box-shadow: none;
   }
 
   #mega-mobile-drawer {
@@ -648,15 +729,12 @@
     top: calc(100% + 10px);
     left: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.85);
     padding: 20px;
     max-height: 80vh;
     overflow-y: auto;
@@ -723,6 +801,7 @@
 
 <script id="floating-mega-header-script">
   document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Drawer Toggle
     const toggle = document.getElementById('mega-mobile-toggle');
     const drawer = document.getElementById('mega-mobile-drawer');
     if (toggle && drawer) {
@@ -735,6 +814,20 @@
           drawer.classList.remove('active');
         }
       });
+    }
+
+    // Dynamic Scroll: Fully Transparent at top -> Frosted Glass & Blur on Scroll
+    const header = document.getElementById('floating-mega-header');
+    if (header && !header.classList.contains('always-scrolled')) {
+      const updateHeaderScroll = () => {
+        if (window.scrollY > 24) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+      updateHeaderScroll();
     }
   });
 </script>
