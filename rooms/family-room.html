@@ -7,7 +7,7 @@
   <meta name="description" content="Viel Raum und Gemütlichkeit für die ganze Familie direkt am Schlosspark. Jetzt Zimmer direkt beim Hotel Alt Westerholt anfragen.">
   <meta property="og:title" content="Familienzimmer | Hotel Alt Westerholt">
   <meta property="og:description" content="Viel Raum und Gemütlichkeit für die ganze Familie direkt am Schlosspark">
-  <meta property="og:image" content="../images/492f2a37_z.webp">
+  <meta property="og:image" content="../images/43fca04d_z.webp">
   <meta property="og:url" content="https://hotel-alt-westerholt.de/rooms/family-room.html">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +73,7 @@
     
     /* Hero Title & Subtitle */
     .room-hero-header {
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     .room-hero-title {
       font-family: 'Playfair Display', Georgia, serif;
@@ -97,8 +97,8 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 10px;
-      margin-top: 20px;
-      margin-bottom: 32px;
+      margin-top: 18px;
+      margin-bottom: 28px;
     }
     .room-pill-badge {
       display: inline-flex;
@@ -123,101 +123,254 @@
       color: #1a1a1a;
     }
     
-    /* Photo Showcase Mosaic (Hotellia style) */
-    .room-mosaic-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      grid-gap: 16px;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-bottom: 48px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.08);
-      height: 480px;
+    /* --- Modern Cinema Room Gallery (16:9 Featured + 4 Thumbs + Lightbox) --- */
+    .room-gallery-showcase {
+      margin-bottom: 44px;
     }
-    .mosaic-main {
+    
+    /* Featured Main Image: 16:9 uncropped cinema stage */
+    .gallery-featured-wrap {
       position: relative;
-      height: 100%;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: 540px;
+      border-radius: 18px;
       overflow: hidden;
-      background: #e9e6e1;
+      background: #181716;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
     }
-    .mosaic-main img {
+    .gallery-featured-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      object-position: center 40%;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
-    .mosaic-main:hover img {
-      transform: scale(1.03);
+    .gallery-featured-wrap:hover .gallery-featured-img {
+      transform: scale(1.02);
     }
-    .mosaic-side {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      grid-gap: 16px;
-      height: 100%;
-    }
-    .mosaic-sub {
-      position: relative;
-      height: 100%;
-      overflow: hidden;
-      background: #e9e6e1;
-    }
-    .mosaic-sub img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .mosaic-sub:hover img {
-      transform: scale(1.04);
-    }
-    .mosaic-caption {
+    .gallery-featured-caption {
       position: absolute;
-      bottom: 12px;
-      left: 12px;
-      background: rgba(18, 18, 18, 0.65);
+      bottom: 16px;
+      left: 16px;
+      background: rgba(18, 17, 16, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .gallery-zoom-hint {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(18, 17, 16, 0.65);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       color: #fff;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 20px;
-      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.9;
+      transition: opacity 0.2s, background 0.2s;
+    }
+    .gallery-featured-wrap:hover .gallery-zoom-hint {
+      opacity: 1;
+      background: rgba(18, 17, 16, 0.85);
     }
     
-    /* Responsive Mosaic */
+    /* 4-Column Thumbnail Selector */
+    .gallery-thumbs-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .gallery-thumb-card {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #e8e4dc;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s;
+    }
+    .gallery-thumb-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-color: #8c7b6c;
+    }
+    .gallery-thumb-card.active {
+      border-color: #8c7b6c;
+      box-shadow: 0 0 0 2px rgba(140, 123, 108, 0.35);
+    }
+    .gallery-thumb-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s;
+    }
+    .gallery-thumb-card:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-thumb-label {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(18, 17, 16, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 14px;
+      pointer-events: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 16px);
+    }
+    
     @media (max-width: 900px) {
-      .room-mosaic-grid {
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-      .mosaic-main {
-        height: 320px;
-      }
-      .mosaic-side {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        height: 180px;
+      .gallery-thumbs-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
     }
-    @media (max-width: 560px) {
-      .mosaic-side {
-        grid-template-columns: 1fr;
-        height: auto;
+    @media (max-width: 600px) {
+      .gallery-featured-wrap {
+        aspect-ratio: 16 / 10;
+        border-radius: 14px;
       }
-      .mosaic-sub {
-        height: 180px;
+      .gallery-thumbs-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .gallery-thumb-card {
+        border-radius: 8px;
+      }
+      .gallery-thumb-label {
+        font-size: 0.65rem;
+        padding: 2px 6px;
       }
     }
 
-    /* 2-Column Split Body (Constellare style) */
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .lightbox-content {
+      position: relative;
+      z-index: 2;
+      max-width: 92vw;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lightbox-content img {
+      max-width: 92vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .lightbox-caption {
+      margin-top: 14px;
+      color: #f0ede8;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -46px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 36px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+      transition: transform 0.2s;
+    }
+    .lightbox-close:hover {
+      transform: scale(1.15);
+    }
+    .lightbox-prev, .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-size: 22px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .lightbox-prev:hover, .lightbox-next:hover {
+      background: rgba(255,255,255,0.35);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .lightbox-prev { left: -64px; }
+    .lightbox-next { right: -64px; }
+    @media (max-width: 800px) {
+      .lightbox-prev { left: 10px; }
+      .lightbox-next { right: 10px; }
+      .lightbox-close { top: -38px; right: 10px; }
+    }
+    
+    /* 2-Column Split Content Layout (Constellare style) */
     .room-split-layout {
       display: grid;
       grid-template-columns: 1fr 380px;
-      grid-gap: 48px;
+      grid-gap: 56px;
       align-items: start;
     }
-    
     @media (max-width: 1024px) {
       .room-split-layout {
         grid-template-columns: 1fr;
@@ -225,177 +378,186 @@
       }
     }
     
-    /* Left Column Content */
+    /* Left Column Details */
     .room-main-column {
-      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
     }
     
     .room-section-block {
-      margin-bottom: 44px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #e8e5df;
     }
+    .room-section-block:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
     .section-headline {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       font-weight: 600;
       color: #1a1a1a;
       margin-bottom: 16px;
       letter-spacing: -0.01em;
     }
+    
     .room-story-p {
-      font-size: 1.05rem;
       color: #444;
-      line-height: 1.75;
+      font-size: 1rem;
+      line-height: 1.7;
       margin-bottom: 16px;
     }
+    .room-story-p:last-child {
+      margin-bottom: 0;
+    }
     
-    /* Amenities Grid */
+    /* Amenities Grid (8 cards) */
     .amenities-cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       grid-gap: 16px;
-      margin-top: 20px;
+      margin-top: 16px;
     }
     .amenity-card {
       background: #ffffff;
-      border: 1px solid #eae7e1;
-      border-radius: 14px;
-      padding: 18px 20px;
+      border: 1px solid #eae6e0;
+      border-radius: 12px;
+      padding: 16px 18px;
       display: flex;
       align-items: flex-start;
       gap: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .amenity-card:hover {
-      border-color: #d8d2c6;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      border-color: #d1c8be;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     .amenity-icon-box {
       width: 36px;
       height: 36px;
-      background: #f7f4ee;
-      color: #8c7b6c;
-      border-radius: 10px;
+      border-radius: 8px;
+      background: #f7f5f2;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #8c7b6c;
       flex-shrink: 0;
     }
     .amenity-info h5 {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #1a1a1a;
       margin-bottom: 3px;
     }
     .amenity-info p {
       font-size: 0.8rem;
-      color: #777;
-      line-height: 1.35;
+      color: #666;
+      line-height: 1.4;
     }
     
-    /* FAQ Accordion */
+    /* FAQ Accordion (Constellare style) */
     .room-faq-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 18px;
+      margin-top: 16px;
     }
     .faq-item {
       background: #ffffff;
-      border: 1px solid #eae7e1;
+      border: 1px solid #eae6e0;
       border-radius: 12px;
       overflow: hidden;
       transition: border-color 0.2s;
     }
     .faq-item[open] {
-      border-color: #cfc7bc;
+      border-color: #d1c8be;
     }
     .faq-summary {
-      padding: 16px 20px;
-      font-size: 0.98rem;
+      padding: 18px 20px;
+      font-size: 0.95rem;
       font-weight: 600;
       color: #1a1a1a;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      list-style: none;
       user-select: none;
+      list-style: none;
     }
     .faq-summary::-webkit-details-marker {
       display: none;
     }
-    .faq-summary .faq-icon {
-      transition: transform 0.25s ease;
-      color: #888;
+    .faq-icon {
+      color: #8c7b6c;
+      transition: transform 0.3s;
+      display: flex;
+      align-items: center;
     }
     .faq-item[open] .faq-icon {
       transform: rotate(180deg);
-      color: #111;
     }
     .faq-body {
-      padding: 0 20px 18px 20px;
+      padding: 0 20px 18px;
       font-size: 0.9rem;
       color: #555;
       line-height: 1.6;
-      border-top: 1px solid #f2efe9;
-      padding-top: 12px;
     }
     
     /* Guest Quote Card */
     .guest-quote-box {
-      background: linear-gradient(135deg, #f8f6f1 0%, #f1ece4 100%);
-      border: 1px solid #dfd8cc;
-      border-radius: 16px;
+      background: #f5f1eb;
+      border-left: 3px solid #8c7b6c;
+      border-radius: 0 12px 12px 0;
       padding: 24px 28px;
-      margin-top: 24px;
-      position: relative;
+      margin-top: 8px;
     }
     .stars-row {
-      display: flex;
-      gap: 4px;
-      color: #d4a017;
-      margin-bottom: 12px;
-      font-size: 1rem;
+      color: #c99a45;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
     .quote-text {
-      font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
-      font-size: 1.05rem;
-      color: #222;
+      color: #2c2c2c;
+      font-size: 0.95rem;
       line-height: 1.6;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .quote-author {
       font-size: 0.8rem;
       font-weight: 600;
       color: #777;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
     
     /* Right Column - Sticky Booking Card (Constellare style) */
     .room-sticky-column {
-      position: sticky;
-      top: 104px;
+      position: relative;
     }
     .sticky-booking-card {
+      position: sticky;
+      top: 110px;
       background: #ffffff;
-      border: 1px solid #e5e1d9;
+      border: 1px solid #e7e3dc;
       border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+      padding: 32px 28px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
     }
+    
     .card-price-row {
       display: flex;
       align-items: baseline;
-      gap: 8px;
-      margin-bottom: 6px;
+      gap: 6px;
+      margin-bottom: 4px;
     }
     .card-price-val {
-      font-size: 2.1rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.2rem;
       font-weight: 700;
       color: #121212;
-      letter-spacing: -0.02em;
     }
     .card-price-unit {
       font-size: 0.95rem;
@@ -404,17 +566,16 @@
     .card-tax-note {
       font-size: 0.8rem;
       color: #888;
-      margin-bottom: 22px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid #f0ece5;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #f0ece6;
     }
     
-    /* Checklist */
     .card-checklist {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin-bottom: 26px;
+      gap: 12px;
+      margin-bottom: 28px;
     }
     .checklist-item {
       display: flex;
@@ -424,31 +585,27 @@
       color: #333;
     }
     .checklist-item svg {
-      color: #2e7d32;
+      color: #438e55;
       flex-shrink: 0;
     }
     
-    /* CTA Buttons */
     .card-cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       width: 100%;
-      height: 52px;
-      background: #111111;
+      padding: 16px 20px;
+      background: #1a1a1a;
       color: #ffffff;
       font-size: 0.95rem;
       font-weight: 600;
-      border-radius: 30px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      text-align: center;
+      border-radius: 12px;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
       margin-bottom: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .card-cta-btn:hover {
-      background: #333;
-      transform: translateY(-1px);
+      background: #333333;
+      transform: translateY(-2px);
     }
     
     .card-phone-btn {
@@ -457,43 +614,43 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      height: 48px;
-      background: #f6f3ee;
+      padding: 14px 20px;
+      background: #f7f4ef;
+      border: 1px solid #ded8cf;
       color: #222;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      border-radius: 30px;
-      border: 1px solid #e0dcd4;
-      cursor: pointer;
-      transition: background 0.2s;
+      border-radius: 12px;
+      transition: background 0.2s, border-color 0.2s;
     }
     .card-phone-btn:hover {
-      background: #ebe5dc;
+      background: #eee9e0;
+      border-color: #c9c0b5;
     }
     
     .card-support-note {
+      margin-top: 18px;
+      text-align: center;
       font-size: 0.78rem;
       color: #888;
-      text-align: center;
-      margin-top: 16px;
       line-height: 1.4;
     }
     
-    /* Bottom: Related Rooms Section */
+    /* Related Rooms Discovery Section (Constellare style) */
     .related-rooms-section {
-      margin-top: 80px;
-      padding-top: 54px;
-      border-top: 1px solid #eae5dc;
+      margin-top: 72px;
+      padding-top: 56px;
+      border-top: 1px solid #e8e4dc;
     }
     .related-header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: flex-end;
       margin-bottom: 28px;
     }
     .related-title {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.75rem;
+      font-size: 1.8rem;
       font-weight: 600;
       color: #121212;
     }
@@ -698,163 +855,111 @@
     align-items: center;
     justify-content: space-between;
     padding: 6px 12px 6px 28px;
-    transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                -webkit-backdrop-filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .mega-pill-container:hover {
-    background: rgba(255, 255, 255, 0.16);
-    border-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.55);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Scrolled State: Frosted Glass & Blur */
+  /* Scrolled or Solid State */
   #floating-mega-header.scrolled .mega-pill-container,
   #floating-mega-header.always-scrolled .mega-pill-container {
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(28px) saturate(190%);
-    -webkit-backdrop-filter: blur(28px) saturate(190%);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.16), 0 2px 10px -2px rgba(0, 0, 0, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
-  }
-  #floating-mega-header.scrolled .mega-pill-container:hover,
-  #floating-mega-header.always-scrolled .mega-pill-container:hover {
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.20), inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+    background: rgba(22, 22, 22, 0.88);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
   }
 
-  /* Brand Logo */
+  /* Brand / Logo */
   .mega-brand {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    line-height: 1.15;
-    flex-shrink: 0;
+    color: #ffffff;
+    user-select: none;
   }
   .brand-title {
     font-size: 1.05rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    color: #ffffff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65), 0 2px 10px rgba(0, 0, 0, 0.4);
+    font-weight: 700;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #ffffff;
+    line-height: 1.1;
   }
   .brand-sub {
-    font-size: 0.58rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: #c4b5a5;
     text-transform: uppercase;
     margin-top: 1px;
-    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  #floating-mega-header.scrolled .brand-title,
-  #floating-mega-header.always-scrolled .brand-title {
-    color: #111111;
-    text-shadow: none;
-  }
-  #floating-mega-header.scrolled .brand-sub,
-  #floating-mega-header.always-scrolled .brand-sub {
-    color: #777777;
-    text-shadow: none;
-  }
-
-  /* Desktop Nav */
+  /* Center Navigation */
   .mega-nav {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
   }
-
   .mega-item {
     position: relative;
   }
-
   .mega-link {
     display: flex;
     align-items: center;
     gap: 5px;
-    padding: 9px 15px;
-    font-size: 0.92rem;
+    padding: 10px 16px;
+    font-size: 0.9rem;
     font-weight: 500;
-    color: #ffffff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+    color: #f0f0f0;
     text-decoration: none;
     border-radius: 20px;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.2s ease;
   }
   .mega-link:hover {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
   }
   .chevron-icon {
-    width: 13px;
-    height: 13px;
-    color: rgba(255, 255, 255, 0.9);
-    transition: transform 0.25s ease, color 0.25s ease;
+    width: 14px;
+    height: 14px;
+    transition: transform 0.25s ease;
+    opacity: 0.75;
   }
-  .has-dropdown:hover .chevron-icon {
+  .mega-item:hover .chevron-icon {
     transform: rotate(180deg);
-    color: #ffffff;
+    opacity: 1;
   }
 
-  #floating-mega-header.scrolled .mega-link,
-  #floating-mega-header.always-scrolled .mega-link {
-    color: #222222;
-    text-shadow: none;
-  }
-  #floating-mega-header.scrolled .mega-link:hover,
-  #floating-mega-header.always-scrolled .mega-link:hover {
-    color: #000000;
-    background: rgba(0, 0, 0, 0.05);
-  }
-  #floating-mega-header.scrolled .chevron-icon,
-  #floating-mega-header.always-scrolled .chevron-icon {
-    color: #777777;
-  }
-  #floating-mega-header.scrolled .has-dropdown:hover .chevron-icon,
-  #floating-mega-header.always-scrolled .has-dropdown:hover .chevron-icon {
-    color: #111111;
-  }
-
-  /* Dropdown Styles */
+  /* Dropdown Menu Panes */
   .mega-dropdown {
     position: absolute;
     top: calc(100% + 14px);
     left: 50%;
     transform: translateX(-50%) translateY(8px);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(28px) saturate(190%);
-    -webkit-backdrop-filter: blur(28px) saturate(190%);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 24px;
-    box-shadow: 0 24px 54px -10px rgba(0, 0, 0, 0.18), 0 4px 12px -2px rgba(0, 0, 0, 0.06);
-    padding: 22px;
+    background: rgba(18, 18, 18, 0.94);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 20px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
+    padding: 24px;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
   }
-  /* Invisible bridge to prevent dropdown closing when moving mouse */
-  .mega-dropdown::before {
-    content: '';
-    position: absolute;
-    top: -16px;
-    left: 0;
-    right: 0;
-    height: 16px;
-  }
-
-  .has-dropdown:hover .mega-dropdown {
+  .mega-item:hover .mega-dropdown {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
+  }
+
+  /* Dropdown sizing */
+  .dropdown-rooms {
+    width: 640px;
+  }
+  .dropdown-dining {
+    width: 480px;
   }
 
   .dropdown-header {
@@ -862,57 +967,52 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 14px;
-    margin-bottom: 14px;
-    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   .dropdown-title {
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #888;
+    color: #a89f91;
   }
   .dropdown-more {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #111;
+    font-size: 0.8rem;
+    color: #e5ded3;
     text-decoration: none;
-    transition: color 0.2s;
+    font-weight: 500;
   }
   .dropdown-more:hover {
-    color: #555;
+    color: #ffffff;
     text-decoration: underline;
   }
 
-  /* Zimmer Dropdown specifics */
-  .dropdown-rooms {
-    width: 680px;
-  }
+  /* Rooms Card Grid */
   .rooms-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
   }
-  .room-preview-card, .dining-preview-card {
+  .room-preview-card {
+    text-decoration: none;
     display: flex;
     flex-direction: column;
-    background: #fbfbfb;
-    border: 1px solid #eee;
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: all 0.25s ease;
   }
-  .room-preview-card:hover, .dining-preview-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    border-color: #ddd;
+  .room-preview-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
   }
   .card-img-wrap {
     position: relative;
     width: 100%;
-    height: 110px;
+    height: 105px;
     overflow: hidden;
   }
   .card-img-wrap img {
@@ -921,51 +1021,60 @@
     object-fit: cover;
     transition: transform 0.4s ease;
   }
-  .room-preview-card:hover .card-img-wrap img, .dining-preview-card:hover .card-img-wrap img {
-    transform: scale(1.05);
+  .room-preview-card:hover .card-img-wrap img {
+    transform: scale(1.06);
   }
   .price-tag {
     position: absolute;
-    bottom: 8px;
-    right: 8px;
-    background: rgba(17, 17, 17, 0.88);
-    backdrop-filter: blur(6px);
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 8px;
+    bottom: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
   }
   .card-info {
-    padding: 12px;
+    padding: 10px 12px;
   }
   .card-info h4 {
-    font-size: 0.86rem;
-    font-weight: 700;
-    color: #111;
-    margin: 0 0 4px 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 2px;
   }
   .card-info p {
-    font-size: 0.74rem;
-    color: #666;
-    margin: 0;
+    font-size: 0.72rem;
+    color: #b5aba0;
     line-height: 1.35;
+    margin: 0;
   }
 
-  /* Dining Dropdown specifics */
-  .dropdown-dining {
-    width: 520px;
-  }
+  /* Dining Grid */
   .dining-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
-  .dining-grid .card-img-wrap {
-    height: 125px;
+  .dining-preview-card {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.25s ease;
+  }
+  .dining-preview-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  .dining-preview-card .card-img-wrap {
+    height: 120px;
   }
 
-  /* Actions & CTA */
+  /* Right Side Actions */
   .mega-actions {
     display: flex;
     align-items: center;
@@ -976,127 +1085,107 @@
     align-items: center;
     gap: 6px;
     color: #ffffff;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
-    font-size: 0.84rem;
-    font-weight: 600;
     text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
     padding: 8px 12px;
     border-radius: 20px;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    background: rgba(255, 255, 255, 0.08);
+    transition: all 0.2s ease;
   }
   .mega-phone-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.16);
   }
-  #floating-mega-header.scrolled .mega-phone-btn,
-  #floating-mega-header.always-scrolled .mega-phone-btn {
-    color: #333333;
-    text-shadow: none;
-  }
-  #floating-mega-header.scrolled .mega-phone-btn:hover,
-  #floating-mega-header.always-scrolled .mega-phone-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: #000000;
-  }
-
   .mega-cta-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #ffffff;
-    color: #111111 !important;
+    padding: 9px 20px;
+    background: #fdfbf7;
+    color: #1a1a1a;
     text-decoration: none;
-    font-size: 0.86rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    padding: 11px 22px;
-    border-radius: 28px;
+    border-radius: 24px;
     letter-spacing: 0.02em;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .mega-cta-btn:hover {
-    background: rgba(255, 255, 255, 0.92);
+    background: #ffffff;
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
-  }
-  #floating-mega-header.scrolled .mega-cta-btn,
-  #floating-mega-header.always-scrolled .mega-cta-btn {
-    background: #111111;
-    color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  #floating-mega-header.scrolled .mega-cta-btn:hover,
-  #floating-mega-header.always-scrolled .mega-cta-btn:hover {
-    background: #2a2a2a;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
   }
 
-  /* Mobile Toggle & Drawer */
+  /* Hamburger Toggle for Mobile */
   #mega-mobile-toggle {
     display: none;
     flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 18px;
-    background: none;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
+    border-radius: 50%;
     cursor: pointer;
+    gap: 4px;
     padding: 0;
   }
   #mega-mobile-toggle span {
     display: block;
-    width: 100%;
+    width: 18px;
     height: 2px;
-    background: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+    background-color: #ffffff;
     border-radius: 2px;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  #floating-mega-header.scrolled #mega-mobile-toggle span,
-  #floating-mega-header.always-scrolled #mega-mobile-toggle span {
-    background: #111111;
-    box-shadow: none;
   }
 
+  /* Mobile Drawer Menu */
   #mega-mobile-drawer {
-    display: none;
-    position: absolute;
-    top: calc(100% + 10px);
+    position: fixed;
+    top: 90px;
     left: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(20, 20, 20, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 24px;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.85);
-    padding: 20px;
-    max-height: 80vh;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    padding: 24px;
+    max-height: calc(100vh - 120px);
     overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 99998;
   }
   #mega-mobile-drawer.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
   .mobile-nav-group {
-    padding-bottom: 12px;
-    margin-bottom: 12px;
-    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
   .mobile-group-title {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    color: #999;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 6px;
+    letter-spacing: 0.1em;
+    color: #a89f91;
+    margin-bottom: 10px;
   }
   .mobile-nav-link {
     display: block;
-    font-size: 0.98rem;
-    font-weight: 600;
-    color: #111;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ffffff;
     text-decoration: none;
-    padding: 6px 0;
+    padding: 8px 0;
   }
   .mobile-nav-link.direct {
     padding: 8px 0;
@@ -1264,6 +1353,8 @@
         <a href="../rooms.html" class="mobile-nav-link">Übersicht aller Zimmer</a>
         <a href="../rooms/classic-room.html" class="mobile-sublink">Komfort Doppelzimmer (ab 89 €)</a>
         <a href="../rooms/deluxe-room.html" class="mobile-sublink">Einzelzimmer Business (ab 69 €)</a>
+        <a href="../rooms/family-room.html" class="mobile-sublink">Familienzimmer (ab 119 €)</a>
+        <a href="../rooms/junior-suite.html" class="mobile-sublink">Historische Romantik-Suite (ab 109 €)</a>
         <a href="../rooms/penthouse-suite.html" class="mobile-sublink">Historisches Appartement (ab 129 €)</a>
       </div>
       <div class="mobile-nav-group">
@@ -1281,6 +1372,7 @@
     </div>
   </div>
 </header>
+
 
   <main class="room-page-wrapper">
     <div class="room-container">
@@ -1305,23 +1397,59 @@
         </div>
       </header>
 
-      <!-- 3-Photo Mosaic Showcase (Hotellia style) -->
-      <section class="room-mosaic-grid" aria-label="Fotos von Familienzimmer">
-        <div class="mosaic-main">
-          <img src="../images/492f2a37_z.webp" alt="Geräumiges Familienzimmer & Sitzecke" fetchpriority="high">
-          <span class="mosaic-caption">Familien-Wohnbereich</span>
-        </div>
-        <div class="mosaic-side">
-          <div class="mosaic-sub">
-            <img src="../images/d5128b30_z.webp" alt="Helles Bad mit Doppelwaschtisch" loading="lazy">
-            <span class="mosaic-caption">Modernes Familienbad</span>
+      <!-- Modern Cinema Room Gallery (16:9 Featured + 4 Thumbs + Lightbox) -->
+      <section class="room-gallery-showcase" aria-label="Fotogalerie von Familienzimmer">
+        
+        <!-- Main Featured Image: Uncropped 16:9 View -->
+        <div class="gallery-featured-wrap" id="featured-gallery-stage" title="Klicken für Vollbildansicht">
+          <img id="main-featured-img" src="../images/43fca04d_z.webp" alt="Großzügiges Familienzimmer mit antikem Doppelbett & Fenstern" class="gallery-featured-img" fetchpriority="high">
+          <div class="gallery-featured-caption" id="main-featured-caption">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Großzügiger Hauptschlafbereich</span>
           </div>
-          <div class="mosaic-sub">
-            <img src="../images/43fca04d_z.webp" alt="Historisches Doppelzimmer & Schlafbereich" loading="lazy">
-            <span class="mosaic-caption">Gemütlicher Schlafbereich</span>
+          <div class="gallery-zoom-hint">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            <span>Großansicht</span>
           </div>
         </div>
+
+        <!-- 4-Thumbnail Strip -->
+        <div class="gallery-thumbs-row" id="gallery-thumbs-strip">
+
+        <div class="gallery-thumb-card active" data-img-index="0" data-img-src="../images/43fca04d_z.webp" data-img-alt="Großzügiges Familienzimmer mit antikem Doppelbett & Fenstern" data-img-label="Großzügiger Hauptschlafbereich">
+          <img src="../images/43fca04d_z.webp" alt="Großzügiges Familienzimmer mit antikem Doppelbett & Fenstern" loading="lazy">
+          <span class="gallery-thumb-label">Großzügiger Hauptschlafbereich</span>
+        </div>
+
+        <div class="gallery-thumb-card" data-img-index="1" data-img-src="../images/d5128b30_z.webp" data-img-alt="Modernes Familien-Badezimmer" data-img-label="Modernes Familienbad">
+          <img src="../images/d5128b30_z.webp" alt="Modernes Familien-Badezimmer" loading="lazy">
+          <span class="gallery-thumb-label">Modernes Familienbad</span>
+        </div>
+
+        <div class="gallery-thumb-card" data-img-index="2" data-img-src="../images/492f2a37_z.webp" data-img-alt="Zusätzlicher Schlafbereich für Kinder/Familie" data-img-label="Zusätzlicher Schlafbereich">
+          <img src="../images/492f2a37_z.webp" alt="Zusätzlicher Schlafbereich für Kinder/Familie" loading="lazy">
+          <span class="gallery-thumb-label">Zusätzlicher Schlafbereich</span>
+        </div>
+
+        <div class="gallery-thumb-card" data-img-index="3" data-img-src="../images/c09ad641_z.webp" data-img-alt="Gemütlicher Familien-Wohnbereich & Sitzecke" data-img-label="Wohnbereich & Sitzecke">
+          <img src="../images/c09ad641_z.webp" alt="Gemütlicher Familien-Wohnbereich & Sitzecke" loading="lazy">
+          <span class="gallery-thumb-label">Wohnbereich & Sitzecke</span>
+        </div>
+        </div>
+
       </section>
+
+      <!-- Lightbox Modal -->
+      <div id="room-lightbox" class="lightbox-modal" aria-hidden="true" role="dialog">
+        <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+        <div class="lightbox-content">
+          <button class="lightbox-close" id="lightbox-close" aria-label="Schließen">&times;</button>
+          <img id="lightbox-img" src="../images/43fca04d_z.webp" alt="Großzügiges Familienzimmer mit antikem Doppelbett & Fenstern">
+          <div id="lightbox-caption" class="lightbox-caption">Großzügiger Hauptschlafbereich</div>
+          <button class="lightbox-prev" id="lightbox-prev" aria-label="Vorheriges Bild">&#10094;</button>
+          <button class="lightbox-next" id="lightbox-next" aria-label="Nächstes Bild">&#10095;</button>
+        </div>
+      </div>
 
       <!-- 2-Column Split Content Layout (Constellare style) -->
       <div class="room-split-layout">
@@ -1382,7 +1510,7 @@
               </div>
 
               <div class="amenity-card">
-                <div class="amenity-icon-box"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
+                <div class="amenity-icon-box"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg></div>
                 <div class="amenity-info">
                   <h5>Frühstück zubuchbar</h5>
                   <p>Reichhaltiges regionales Frühstücksbuffet am Morgen</p>
@@ -1532,6 +1660,7 @@
           </div>
         </a>
         
+
         <a href="deluxe-room.html" class="other-room-card">
           <div class="other-room-img-wrap">
             <img src="../images/14dae73b_z.webp" alt="Einzelzimmer Business" loading="lazy">
@@ -1544,6 +1673,7 @@
           </div>
         </a>
         
+
         <a href="penthouse-suite.html" class="other-room-card">
           <div class="other-room-img-wrap">
             <img src="../images/18b71e25_z.webp" alt="Historisches Appartement" loading="lazy">
@@ -1608,6 +1738,107 @@
     </div>
   </footer>
 
+
+  <!-- Interactive Gallery & Lightbox JS Logic -->
+  <script id="room-gallery-script">
+  document.addEventListener('DOMContentLoaded', () => {
+    const roomPhotos = [{"src": "../images/43fca04d_z.webp", "alt": "Gro\u00dfz\u00fcgiges Familienzimmer mit antikem Doppelbett & Fenstern", "label": "Gro\u00dfz\u00fcgiger Hauptschlafbereich"}, {"src": "../images/d5128b30_z.webp", "alt": "Modernes Familien-Badezimmer", "label": "Modernes Familienbad"}, {"src": "../images/492f2a37_z.webp", "alt": "Zus\u00e4tzlicher Schlafbereich f\u00fcr Kinder/Familie", "label": "Zus\u00e4tzlicher Schlafbereich"}, {"src": "../images/c09ad641_z.webp", "alt": "Gem\u00fctlicher Familien-Wohnbereich & Sitzecke", "label": "Wohnbereich & Sitzecke"}];
+    let currentIdx = 0;
+
+    const featuredImg = document.getElementById('main-featured-img');
+    const featuredCaption = document.querySelector('#main-featured-caption span');
+    const thumbCards = document.querySelectorAll('.gallery-thumb-card');
+    const featuredStage = document.getElementById('featured-gallery-stage');
+
+    // Lightbox elements
+    const lightbox = document.getElementById('room-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+
+    function updateMainPhoto(idx) {
+      if (idx < 0 || idx >= roomPhotos.length) return;
+      currentIdx = idx;
+      const photo = roomPhotos[idx];
+      
+      // Smooth fade transition
+      featuredImg.style.opacity = '0.4';
+      setTimeout(() => {
+        featuredImg.src = photo.src;
+        featuredImg.alt = photo.alt;
+        if (featuredCaption) featuredCaption.textContent = photo.label;
+        featuredImg.style.opacity = '1';
+      }, 120);
+
+      // Update active thumbnail
+      thumbCards.forEach((card, cIdx) => {
+        if (cIdx === idx) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    // Thumbnail clicks
+    thumbCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const idx = parseInt(card.getAttribute('data-img-index'), 10);
+        updateMainPhoto(idx);
+      });
+    });
+
+    // Lightbox functions
+    function openLightbox(idx) {
+      currentIdx = idx;
+      const photo = roomPhotos[idx];
+      lightboxImg.src = photo.src;
+      lightboxImg.alt = photo.alt;
+      lightboxCaption.textContent = photo.label;
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function nextLightbox() {
+      const nextIdx = (currentIdx + 1) % roomPhotos.length;
+      openLightbox(nextIdx);
+      updateMainPhoto(nextIdx);
+    }
+
+    function prevLightbox() {
+      const prevIdx = (currentIdx - 1 + roomPhotos.length) % roomPhotos.length;
+      openLightbox(prevIdx);
+      updateMainPhoto(prevIdx);
+    }
+
+    if (featuredStage) {
+      featuredStage.addEventListener('click', () => openLightbox(currentIdx));
+    }
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+    if (lightboxNext) lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); nextLightbox(); });
+    if (lightboxPrev) lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); prevLightbox(); });
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextLightbox();
+      if (e.key === 'ArrowLeft') prevLightbox();
+    });
+  });
+  </script>
+
   <!-- Floating Header JS Logic -->
   <script id="floating-mega-header-script">
   document.addEventListener('DOMContentLoaded', () => {
@@ -1640,7 +1871,7 @@
       updateHeaderScroll();
     }
   });
-</script>
+  </script>
 
 </body>
 </html>
