@@ -168,6 +168,8 @@
 
 <!-- ================= MASTER RESPONSIVE OVERRIDES (MOBILE / TABLET / DESKTOP) ================= -->
 <style id="master-responsive-engine">
+  /* ================= MASTER RESPONSIVE ENGINE (MOBILE / TABLET / DESKTOP) ================= */
+
   /* 1. Global Box-Sizing & Viewport Containment */
   *, *::before, *::after {
     box-sizing: border-box !important;
@@ -261,20 +263,27 @@
   }
 
   /* 4. Opening Hours Section */
-  .framer-1jfbmfr {
+  .framer-1jfbmfr,
+  .framer-gkgO3 .framer-1jfbmfr {
     width: 100% !important;
     max-width: 100% !important;
     padding: clamp(32px, 5vw, 64px) clamp(16px, 4vw, 32px) !important;
     box-sizing: border-box !important;
   }
-  .framer-1q6k2ff {
+  .framer-1q6k2ff,
+  .framer-gkgO3 .framer-1q6k2ff {
     width: 100% !important;
     max-width: 1284px !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
   }
+  .framer-91qXV.framer-1kilaj2 {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
 
-  /* 5. Main & Menu Section */
+  /* 5. Main & Speisekarte Section */
   .framer-9ccnl9 {
     width: 100% !important;
     max-width: 100% !important;
@@ -298,8 +307,9 @@
     box-sizing: border-box !important;
   }
 
-  /* Menu Items */
-  .framer-ia8y54 {
+  /* Menu Items - Complete Overhaul with Specificity Overrides */
+  .framer-ia8y54,
+  .framer-gkgO3 .framer-ia8y54 {
     display: flex !important;
     flex-direction: row !important;
     align-items: flex-start !important;
@@ -307,19 +317,85 @@
     width: 100% !important;
     padding: 0 0 32px !important;
     box-sizing: border-box !important;
+    border-bottom: 1px solid #eeeeee !important;
   }
-  .framer-uwwo88 {
+  .framer-uwwo88,
+  .framer-gkgO3 .framer-uwwo88 {
     flex: none !important;
-    min-width: 100px !important;
+    width: 140px !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
   }
-  .framer-2s50on {
+  .framer-uwwo88 p,
+  .framer-gkgO3 .framer-uwwo88 p {
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: #8c7b6c !important;
+    margin: 0 !important;
+  }
+  .framer-2s50on,
+  .framer-gkgO3 .framer-2s50on {
     flex: 1 1 auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    box-sizing: border-box !important;
   }
-  .framer-xxd7pu {
+  .framer-ko1d07,
+  .framer-gkgO3 .framer-ko1d07 {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+  .framer-ko1d07 h3,
+  .framer-gkgO3 .framer-ko1d07 h3 {
+    font-size: clamp(1.15rem, 2.2vw, 1.4rem) !important;
+    font-weight: 600 !important;
+    color: #111111 !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+  }
+  .framer-zn5m4v,
+  .framer-gkgO3 .framer-zn5m4v {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+  .framer-zn5m4v p,
+  .framer-gkgO3 .framer-zn5m4v p {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    color: #666666 !important;
+    margin: 0 !important;
+  }
+  .framer-xxd7pu,
+  .framer-gkgO3 .framer-xxd7pu {
     flex: none !important;
+    width: auto !important;
     display: flex !important;
     align-items: baseline !important;
-    gap: 4px !important;
+    gap: 3px !important;
+  }
+  .framer-xxd7pu h3,
+  .framer-gkgO3 .framer-xxd7pu h3 {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+    margin: 0 !important;
   }
 
   /* Biergarten & Story Section */
@@ -378,6 +454,25 @@
       max-height: calc(100vh - 90px) !important;
     }
 
+    /* Opening hours on tablet: 2 cols */
+    .framer-1q6k2ff,
+    .framer-gkgO3 .framer-1q6k2ff {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 32px 24px !important;
+    }
+
+    /* Menu on tablet */
+    .framer-ia8y54,
+    .framer-gkgO3 .framer-ia8y54 {
+      gap: 20px !important;
+    }
+    .framer-uwwo88,
+    .framer-gkgO3 .framer-uwwo88 {
+      width: 120px !important;
+      min-width: 120px !important;
+      max-width: 120px !important;
+    }
+
     /* Footer on tablet */
     .framer-X0AF1 .framer-2hnw91 {
       flex-wrap: wrap !important;
@@ -432,18 +527,66 @@
       line-height: 1.45 !important;
     }
 
-    /* Menu Items on mobile: stack category above name, price inline */
-    .framer-ia8y54 {
+    /* Opening hours on mobile: 1 col or 2 cols */
+    .framer-1q6k2ff,
+    .framer-gkgO3 .framer-1q6k2ff {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+
+    /* Menu Items on mobile: stack category pill above name, price below */
+    .framer-ia8y54,
+    .framer-gkgO3 .framer-ia8y54 {
       flex-direction: column !important;
       gap: 8px !important;
-      padding: 0 0 20px !important;
+      padding: 0 0 24px !important;
+      width: 100% !important;
     }
-    .framer-uwwo88 {
+    .framer-uwwo88,
+    .framer-gkgO3 .framer-uwwo88 {
+      width: 100% !important;
       min-width: 0 !important;
       max-width: 100% !important;
+      flex: none !important;
+      margin-bottom: 2px !important;
     }
-    .framer-xxd7pu {
+    .framer-uwwo88 p,
+    .framer-gkgO3 .framer-uwwo88 p {
+      display: inline-block !important;
+      background: #f0ece6 !important;
+      color: #8c7b6c !important;
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em !important;
+      padding: 3px 10px !important;
+      border-radius: 12px !important;
+    }
+    .framer-2s50on,
+    .framer-gkgO3 .framer-2s50on {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      flex: none !important;
+      gap: 4px !important;
+    }
+    .framer-ko1d07,
+    .framer-gkgO3 .framer-ko1d07 {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+    .framer-zn5m4v,
+    .framer-gkgO3 .framer-zn5m4v {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+    }
+    .framer-xxd7pu,
+    .framer-gkgO3 .framer-xxd7pu {
+      width: 100% !important;
       margin-top: 4px !important;
+      justify-content: flex-start !important;
     }
 
     /* Main spacing */
