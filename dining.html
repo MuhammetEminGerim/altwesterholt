@@ -4,7 +4,7 @@
 <html lang="de" data-redirect-timezone="1" dir="ltr">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 	<meta name="generator" content="Framer 8ca8007">
 	<title>Restaurant & Festsaal | Hotel Alt Westerholt</title>
     <meta name="description" content="Traditionsreiches Hotel &amp; Restaurant im historischen Alten Dorf Westerholt. Gemütliche Zimmer, westfälische Küche und herzliche Gastfreundschaft.">
@@ -166,6 +166,314 @@
   }
 </style>
 
+<!-- ================= MASTER RESPONSIVE OVERRIDES (MOBILE / TABLET / DESKTOP) ================= -->
+<style id="master-responsive-engine">
+  /* 1. Global Box-Sizing & Viewport Containment */
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+  html {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    -webkit-text-size-adjust: 100% !important;
+  }
+  body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 2. Un-constrain Framer Root & Wrapper Layouts */
+  #main,
+  [data-framer-root],
+  [data-layout-template="true"],
+  .framer-0RvP4,
+  .framer-gkgO3,
+  .framer-65XLw,
+  .framer-fbxPu,
+  .framer-VdjGV,
+  .framer-1cfqgo7,
+  .framer-9ccnl9 {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Hero Section Fluid Scaling */
+  .framer-1a0m7s1-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: clamp(340px, 45vh, 520px) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  .framer-zjwYF,
+  .framer-zjwYF.framer-og2v7z,
+  .framer-zjwYF.framer-v-18ipfgy,
+  .framer-zjwYF.framer-v-rldur0 {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    padding: clamp(60px, 10vh, 96px) clamp(16px, 4vw, 32px) clamp(24px, 4vh, 48px) !important;
+  }
+  .framer-zjwYF .framer-c6i4av,
+  .framer-zjwYF .framer-180t7fo-container {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+  }
+  .framer-zjwYF .framer-y4nbx6 {
+    width: 100% !important;
+    max-width: 1284px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    z-index: 3 !important;
+  }
+  .framer-zjwYF .framer-u9k5ob {
+    max-width: 720px !important;
+    width: 100% !important;
+  }
+  .framer-zjwYF h1 {
+    font-size: clamp(2rem, 5.5vw, 3.4rem) !important;
+    line-height: 1.15 !important;
+  }
+  .framer-zjwYF p {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem) !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 4. Opening Hours Section */
+  .framer-1jfbmfr {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: clamp(32px, 5vw, 64px) clamp(16px, 4vw, 32px) !important;
+    box-sizing: border-box !important;
+  }
+  .framer-1q6k2ff {
+    width: 100% !important;
+    max-width: 1284px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 5. Main & Menu Section */
+  .framer-9ccnl9 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 32px) !important;
+    gap: clamp(48px, 8vw, 96px) !important;
+    box-sizing: border-box !important;
+  }
+  .framer-1x9eerf,
+  .framer-1ob1nl4,
+  .framer-3clncs {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .framer-ux5l0p,
+  .framer-1h1o48p,
+  .framer-7o86kk {
+    width: 100% !important;
+    max-width: 1284px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Menu Items */
+  .framer-ia8y54 {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 32px !important;
+    width: 100% !important;
+    padding: 0 0 32px !important;
+    box-sizing: border-box !important;
+  }
+  .framer-uwwo88 {
+    flex: none !important;
+    min-width: 100px !important;
+  }
+  .framer-2s50on {
+    flex: 1 1 auto !important;
+  }
+  .framer-xxd7pu {
+    flex: none !important;
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 4px !important;
+  }
+
+  /* Biergarten & Story Section */
+  .framer-1ob1nl4 .framer-hltmh1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Reservation & Image Banner */
+  .framer-3clncs .framer-nxr34h {
+    width: 100% !important;
+    height: clamp(280px, 40vh, 480px) !important;
+    position: relative !important;
+  }
+
+  /* 6. Footer Section */
+  .framer-X0AF1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: clamp(48px, 6vw, 72px) clamp(16px, 4vw, 32px) clamp(24px, 4vw, 40px) !important;
+  }
+  .framer-X0AF1 .framer-2hnw91 {
+    width: 100% !important;
+    max-width: 1284px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 40px !important;
+  }
+
+  /* ================= RESPONSIVE BREAKPOINT: TABLET (641px - 1024px) ================= */
+  @media screen and (max-width: 1024px) {
+    /* Header adjustments */
+    .mega-nav {
+      display: none !important;
+    }
+    .mega-phone-btn {
+      display: none !important;
+    }
+    .mega-actions .mega-cta-btn {
+      display: none !important;
+    }
+    #mega-mobile-toggle {
+      display: flex !important;
+    }
+    .mega-pill-container {
+      height: 56px !important;
+      padding: 6px 14px 6px 20px !important;
+    }
+    #mega-mobile-drawer {
+      left: 16px !important;
+      right: 16px !important;
+      max-width: calc(100vw - 32px) !important;
+      max-height: calc(100vh - 90px) !important;
+    }
+
+    /* Footer on tablet */
+    .framer-X0AF1 .framer-2hnw91 {
+      flex-wrap: wrap !important;
+      gap: 32px !important;
+    }
+  }
+
+  /* ================= RESPONSIVE BREAKPOINT: MOBILE (<= 640px) ================= */
+  @media screen and (max-width: 640px) {
+    /* Header on small screens */
+    #floating-mega-header {
+      top: 12px !important;
+      padding: 0 12px !important;
+    }
+    .mega-pill-container {
+      height: 52px !important;
+      padding: 4px 12px 4px 16px !important;
+      border-radius: 30px !important;
+    }
+    .brand-title {
+      font-size: 0.9rem !important;
+      letter-spacing: 0.12em !important;
+    }
+    .brand-sub {
+      font-size: 0.5rem !important;
+    }
+    .mega-actions .mega-cta-btn {
+      display: none !important;
+    }
+    #mega-mobile-drawer {
+      left: 12px !important;
+      right: 12px !important;
+      padding: 16px !important;
+      border-radius: 20px !important;
+    }
+
+    /* Hero section on mobile */
+    .framer-1a0m7s1-container {
+      height: clamp(280px, 40vh, 380px) !important;
+    }
+    .framer-zjwYF,
+    .framer-zjwYF.framer-og2v7z,
+    .framer-zjwYF.framer-v-rldur0 {
+      padding: 72px 16px 24px !important;
+    }
+    .framer-zjwYF h1 {
+      font-size: clamp(1.8rem, 7vw, 2.4rem) !important;
+      line-height: 1.18 !important;
+    }
+    .framer-zjwYF p {
+      font-size: 0.92rem !important;
+      line-height: 1.45 !important;
+    }
+
+    /* Menu Items on mobile: stack category above name, price inline */
+    .framer-ia8y54 {
+      flex-direction: column !important;
+      gap: 8px !important;
+      padding: 0 0 20px !important;
+    }
+    .framer-uwwo88 {
+      min-width: 0 !important;
+      max-width: 100% !important;
+    }
+    .framer-xxd7pu {
+      margin-top: 4px !important;
+    }
+
+    /* Main spacing */
+    .framer-9ccnl9 {
+      padding: 36px 16px !important;
+      gap: 48px !important;
+    }
+
+    /* Footer on mobile: Vertical stack */
+    .framer-X0AF1 {
+      padding: 48px 16px 32px !important;
+    }
+    .framer-X0AF1 .framer-2hnw91 {
+      flex-direction: column !important;
+      gap: 32px !important;
+    }
+  }
+
+  /* Extra Small Devices (<= 360px - e.g. iPhone SE, Galaxy A) */
+  @media screen and (max-width: 360px) {
+    .brand-title {
+      font-size: 0.8rem !important;
+      letter-spacing: 0.08em !important;
+    }
+    .brand-sub {
+      display: none !important;
+    }
+  }
+</style>
+<!-- ================= END MASTER RESPONSIVE OVERRIDES ================= -->
 </head>
 <body>
 
