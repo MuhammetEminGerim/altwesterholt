@@ -879,13 +879,24 @@ html.lenis body {
     <!-- End of bodyEnd -->
 
 <!-- ================= LIGHTBOX MODAL ================= -->
-<div id="gallery-lightbox" style="display:none; position:fixed; inset:0; z-index:999999; background:rgba(0,0,0,0.88); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); align-items:center; justify-content:center;">
-  <button id="lightbox-close" style="position:absolute; top:24px; right:28px; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#fff; width:44px; height:44px; border-radius:50%; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" title="Schließen (ESC)">✕</button>
-  <button id="lightbox-prev" style="position:absolute; left:24px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#fff; width:52px; height:52px; border-radius:50%; font-size:24px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" title="Vorheriges Bild">‹</button>
-  <button id="lightbox-next" style="position:absolute; right:24px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:#fff; width:52px; height:52px; border-radius:50%; font-size:24px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s;" title="Nächstes Bild">›</button>
-  <div style="max-width:90vw; max-height:85vh; display:flex; flex-direction:column; align-items:center;">
-    <img id="lightbox-img" src="" alt="Hotel Alt Westerholt Impression" style="max-width:90vw; max-height:80vh; object-fit:contain; border-radius:12px; box-shadow:0 24px 60px rgba(0,0,0,0.5); transition:transform 0.25s ease;">
-    <div id="lightbox-counter" style="margin-top:14px; color:rgba(255,255,255,0.7); font-size:0.9rem; font-family:sans-serif; letter-spacing:0.05em;"></div>
+<div id="gallery-lightbox" style="display:none; position:fixed; inset:0; z-index:999999; background:rgba(12,12,14,0.55); backdrop-filter:blur(25px) saturate(180%); -webkit-backdrop-filter:blur(25px) saturate(180%); align-items:center; justify-content:center; overflow:hidden;">
+  <!-- Ambient glow layer -->
+  <div id="lightbox-ambient" style="position:absolute; inset:-20%; z-index:0; pointer-events:none; overflow:hidden;">
+    <img id="lightbox-ambient-img" src="" alt="" style="width:100%; height:100%; object-fit:cover; filter:blur(90px) saturate(200%); opacity:0.35; transform:scale(1.3); transition:opacity 0.3s ease;">
+  </div>
+
+  <!-- Close button -->
+  <button id="lightbox-close" style="position:absolute; top:24px; right:28px; z-index:10; background:rgba(255,255,255,0.18); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.3); color:#fff; width:44px; height:44px; border-radius:50%; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; box-shadow:0 8px 24px rgba(0,0,0,0.25);" title="Schließen (ESC)">✕</button>
+
+  <!-- Prev / Next buttons -->
+  <button id="lightbox-prev" style="position:absolute; left:24px; top:50%; transform:translateY(-50%); z-index:10; background:rgba(255,255,255,0.18); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.3); color:#fff; width:52px; height:52px; border-radius:50%; font-size:26px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; box-shadow:0 8px 24px rgba(0,0,0,0.25);" title="Vorheriges Bild">‹</button>
+  <button id="lightbox-next" style="position:absolute; right:24px; top:50%; transform:translateY(-50%); z-index:10; background:rgba(255,255,255,0.18); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.3); color:#fff; width:52px; height:52px; border-radius:50%; font-size:26px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; box-shadow:0 8px 24px rgba(0,0,0,0.25);" title="Nächstes Bild">›</button>
+
+  <!-- Foreground image & captions container -->
+  <div style="position:relative; z-index:5; max-width:90vw; max-height:88vh; display:flex; flex-direction:column; align-items:center; pointer-events:none;">
+    <img id="lightbox-img" src="" alt="Hotel Alt Westerholt Impression" style="max-width:90vw; max-height:76vh; object-fit:contain; border-radius:12px; box-shadow:0 30px 90px rgba(0,0,0,0.6); pointer-events:auto;">
+    <div id="lightbox-caption" style="margin-top:14px; color:#ffffff; font-size:1.05rem; font-family:'Inter',sans-serif; font-weight:500; text-align:center; text-shadow:0 2px 10px rgba(0,0,0,0.6); pointer-events:auto;"></div>
+    <div id="lightbox-counter" style="margin-top:4px; color:rgba(255,255,255,0.7); font-size:0.85rem; font-family:'Inter',sans-serif; letter-spacing:0.06em; text-shadow:0 1px 6px rgba(0,0,0,0.6); pointer-events:auto;"></div>
   </div>
 </div>
 <script id="gallery-lightbox-script">
@@ -904,11 +915,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showImage(idx) {
     currentIndex = (idx + images.length) % images.length;
-    lightboxImg.src = images[currentIndex].src;
+    const currentSrc = images[currentIndex].src;
+    const currentAlt = images[currentIndex].alt || '';
+
+    lightboxImg.src = currentSrc;
+    const ambientImg = document.getElementById('lightbox-ambient-img');
+    if (ambientImg) ambientImg.src = currentSrc;
+
     lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
     const caption = document.getElementById('lightbox-caption');
     if (caption) {
-      caption.textContent = images[currentIndex].alt || '';
+      caption.textContent = currentAlt;
     }
   }
 
@@ -932,7 +949,9 @@ document.addEventListener('DOMContentLoaded', () => {
   btnNext.addEventListener('click', (e) => { e.stopPropagation(); showImage(currentIndex + 1); });
 
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox || e.target.parentElement === lightbox) closeLightbox();
+    if (e.target === lightbox || e.target.id === 'lightbox-ambient' || e.target.id === 'lightbox-ambient-img') {
+      closeLightbox();
+    }
   });
 
   document.addEventListener('keydown', (e) => {
