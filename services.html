@@ -304,21 +304,32 @@
     gap: clamp(32px, 5vw, 96px) !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
     box-sizing: border-box !important;
   }
 
-  /* Service Image */
+  /* Service Image - Always visible & properly sized */
   .framer-qz7woe,
   .framer-3grTB .framer-qz7woe {
+    display: block !important;
     flex: 1 1 50% !important;
     width: 50% !important;
     max-width: 580px !important;
-    min-width: 300px !important;
+    min-width: 280px !important;
     height: clamp(280px, 35vw, 380px) !important;
+    min-height: 240px !important;
     border-radius: 20px !important;
     overflow: hidden !important;
     position: relative !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  }
+  .framer-qz7woe [data-framer-background-image-wrapper="true"] {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
   }
   .framer-qz7woe img,
   .framer-3grTB .framer-qz7woe img {
@@ -452,14 +463,20 @@
     }
     .framer-qz7woe,
     .framer-3grTB .framer-qz7woe {
+      display: block !important;
       width: 100% !important;
       max-width: 100% !important;
+      min-width: 0 !important;
       height: clamp(260px, 40vw, 340px) !important;
+      min-height: 240px !important;
+      flex: none !important;
     }
     .framer-1jpvakt,
     .framer-3grTB .framer-1jpvakt {
       width: 100% !important;
       max-width: 100% !important;
+      min-width: 0 !important;
+      flex: none !important;
     }
 
     /* Footer on tablet */
@@ -536,15 +553,21 @@
     }
     .framer-qz7woe,
     .framer-3grTB .framer-qz7woe {
+      display: block !important;
       width: 100% !important;
       max-width: 100% !important;
+      min-width: 0 !important;
       height: clamp(200px, 45vw, 260px) !important;
+      min-height: 200px !important;
+      flex: none !important;
       border-radius: 14px !important;
     }
     .framer-1jpvakt,
     .framer-3grTB .framer-1jpvakt {
       width: 100% !important;
       max-width: 100% !important;
+      min-width: 0 !important;
+      flex: none !important;
       gap: 10px !important;
     }
     .framer-szhlsh h2,
