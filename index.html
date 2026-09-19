@@ -222,18 +222,27 @@
     box-sizing: border-box !important;
   }
 
-  /* 3. Hero Section Fluid Scaling & Viewport Hitch Elimination */
+  /* 3. Hero Section Fluid Scaling (Desktop: Full 100vh viewport) */
   .framer-2imqqa-container {
-    height: auto !important;
-    min-height: 85vh !important;
-    min-height: 85dvh !important;
+    height: 100vh !important;
+    min-height: 680px !important;
     width: 100% !important;
     position: relative !important;
   }
   .framer-2imqqa-container > .ssr-variant {
-    height: auto !important;
-    min-height: 85vh !important;
-    min-height: 85dvh !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  .framer-2imqqa-container section,
+  .framer-zjwYF,
+  .framer-zjwYF.framer-og2v7z {
+    height: 100% !important;
+    width: 100% !important;
+  }
+  .framer-zjwYF .framer-c6i4av {
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
     width: 100% !important;
   }
   .framer-zjwYF,
@@ -450,6 +459,26 @@
       max-height: calc(100vh - 90px) !important;
     }
 
+    /* Hero section on tablet */
+    .framer-2imqqa-container {
+      height: 90vh !important;
+      height: 90dvh !important;
+      min-height: 600px !important;
+      width: 100% !important;
+      position: relative !important;
+    }
+    .framer-2imqqa-container > .ssr-variant,
+    .framer-zjwYF.framer-v-18ipfgy {
+      height: 100% !important;
+      width: 100% !important;
+    }
+    .framer-zjwYF.framer-v-18ipfgy .framer-c6i4av {
+      position: absolute !important;
+      inset: 0 !important;
+      height: 100% !important;
+      width: 100% !important;
+    }
+
     /* Rooms grid on tablet */
     .framer-1vytm3 .framer-jiektn {
       grid-template-columns: repeat(2, 1fr) !important;
@@ -522,22 +551,33 @@
     }
 
     /* Hero section on mobile */
-    .framer-2imqqa-container,
+    .framer-2imqqa-container {
+      height: 85vh !important;
+      height: 85dvh !important;
+      min-height: 540px !important;
+      width: 100% !important;
+      position: relative !important;
+    }
     .framer-2imqqa-container > .ssr-variant {
-      height: auto !important;
-      min-height: 82vh !important;
-      min-height: 82dvh !important;
+      height: 100% !important;
+      width: 100% !important;
     }
     .framer-zjwYF,
     .framer-zjwYF.framer-og2v7z,
     .framer-zjwYF.framer-v-rldur0 {
       padding: 96px 16px 48px !important;
-      min-height: 82vh !important;
-      min-height: 82dvh !important;
-      height: auto !important;
+      height: 100% !important;
+      width: 100% !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: flex-end !important;
+      box-sizing: border-box !important;
+    }
+    .framer-zjwYF .framer-c6i4av {
+      position: absolute !important;
+      inset: 0 !important;
+      height: 100% !important;
+      width: 100% !important;
     }
     .framer-zjwYF .framer-y4nbx6 {
       flex-direction: column !important;
