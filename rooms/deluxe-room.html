@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Einzelzimmer Business | Hotel Alt Westerholt</title>
   <meta name="description" content="Effizient & ruhig wohnen – ideal für Geschäftsreisende und Schalke-Gäste. Jetzt Zimmer direkt beim Hotel Alt Westerholt anfragen.">
   <meta property="og:title" content="Einzelzimmer Business | Hotel Alt Westerholt">
@@ -816,7 +816,80 @@
         text-align: center;
       }
     }
-  </style>
+  
+  /* Mobile & Tablet Responsive Enhancements */
+  @media (max-width: 1024px) {
+    .room-split-layout {
+      grid-template-columns: 1fr !important;
+      grid-gap: 36px !important;
+    }
+    .sticky-booking-card {
+      position: relative !important;
+      top: 0 !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .room-container {
+      padding: 0 16px !important;
+    }
+    .room-page-wrapper {
+      padding-top: 84px !important;
+      padding-bottom: 48px !important;
+    }
+    .room-hero-title {
+      font-size: clamp(1.65rem, 6.5vw, 2.2rem) !important;
+      line-height: 1.2 !important;
+    }
+    .room-hero-subtitle {
+      font-size: 0.95rem !important;
+    }
+    .room-badges-bar {
+      gap: 6px !important;
+      margin-bottom: 20px !important;
+    }
+    .room-pill-badge {
+      font-size: 0.78rem !important;
+      padding: 6px 12px !important;
+    }
+    .gallery-featured-wrap {
+      aspect-ratio: 16 / 10 !important;
+      border-radius: 14px !important;
+    }
+    .gallery-thumbs-row {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      margin-top: 8px !important;
+    }
+    .sticky-booking-card {
+      padding: 24px 18px !important;
+      border-radius: 16px !important;
+    }
+    .card-price-val {
+      font-size: 1.85rem !important;
+    }
+    .related-rooms-grid {
+      grid-template-columns: 1fr !important;
+      gap: 18px !important;
+    }
+    .related-header {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 8px !important;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .room-container {
+      padding: 0 12px !important;
+    }
+    .room-pill-badge {
+      width: 100% !important;
+      justify-content: center !important;
+    }
+  }
+</style>
   
   <style id="floating-mega-header-styles">
   /* Completely hide underlying Framer navbar */
