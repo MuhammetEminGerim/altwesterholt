@@ -287,15 +287,30 @@
   }
   .framer-d8pyu5,
   .framer-3grTB .framer-d8pyu5 {
+    display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
     gap: clamp(48px, 6vw, 80px) !important;
     box-sizing: border-box !important;
   }
 
-  /* Service Card Rows */
+  /* Service Card Outer Container - Fix 0px height collapse */
   .framer-17pxhet,
-  .framer-3grTB .framer-17pxhet,
+  .framer-3grTB .framer-17pxhet {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: min-content !important;
+    flex: none !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Service Card Inner Content - Fix 0px height collapse */
   .framer-1icburl,
   .framer-3grTB .framer-1icburl {
     display: flex !important;
@@ -305,7 +320,8 @@
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    min-height: 0 !important;
+    min-height: min-content !important;
+    flex: none !important;
     overflow: visible !important;
     box-sizing: border-box !important;
   }
@@ -347,6 +363,7 @@
     width: 50% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+    height: auto !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 16px !important;
@@ -356,6 +373,7 @@
   .framer-3grTB .framer-1b51bow {
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 8px !important;
@@ -383,6 +401,7 @@
   .framer-3grTB .framer-szhlsh {
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
   }
   .framer-szhlsh h2,
   .framer-szhlsh h3,
@@ -400,6 +419,7 @@
   .framer-3grTB .framer-1nbup0r {
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
   }
   .framer-1nbup0r p,
   .framer-3grTB .framer-1nbup0r p {
@@ -426,7 +446,7 @@
     gap: 40px !important;
   }
 
-  /* ================= RESPONSIVE BREAKPOINT: TABLET (641px - 1024px) ================= */
+  /* ================= RESPONSIVE BREAKPOINT: TABLET & MOBILE (<= 1024px) ================= */
   @media screen and (max-width: 1024px) {
     /* Header adjustments */
     .mega-nav {
@@ -452,20 +472,32 @@
       max-height: calc(100vh - 90px) !important;
     }
 
-    /* Stack service cards on tablet */
+    /* Stack service cards vertically */
     .framer-17pxhet,
-    .framer-3grTB .framer-17pxhet,
+    .framer-3grTB .framer-17pxhet {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: min-content !important;
+      flex: none !important;
+    }
     .framer-1icburl,
     .framer-3grTB .framer-1icburl {
+      display: flex !important;
       flex-direction: column !important;
       align-items: flex-start !important;
-      gap: 28px !important;
+      gap: 20px !important;
       width: 100% !important;
+      height: auto !important;
+      min-height: min-content !important;
+      flex: none !important;
     }
     .framer-1icburl .ssr-variant {
       display: block !important;
       width: 100% !important;
       height: auto !important;
+      flex: none !important;
     }
     .framer-qz7woe,
     .framer-3grTB .framer-qz7woe {
@@ -473,16 +505,23 @@
       width: 100% !important;
       max-width: 100% !important;
       min-width: 0 !important;
-      height: clamp(260px, 40vw, 340px) !important;
-      min-height: 240px !important;
+      height: clamp(220px, 45vw, 320px) !important;
+      min-height: 220px !important;
       flex: none !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      position: relative !important;
     }
     .framer-1jpvakt,
     .framer-3grTB .framer-1jpvakt {
+      display: flex !important;
+      flex-direction: column !important;
       width: 100% !important;
       max-width: 100% !important;
       min-width: 0 !important;
+      height: auto !important;
       flex: none !important;
+      gap: 12px !important;
     }
 
     /* Footer on tablet */
@@ -543,24 +582,36 @@
     .framer-p82d4c,
     .framer-3grTB .framer-p82d4c {
       padding: 36px 16px !important;
-      gap: 40px !important;
+      gap: 48px !important;
     }
     .framer-d8pyu5,
     .framer-3grTB .framer-d8pyu5 {
-      gap: 36px !important;
+      gap: 48px !important;
     }
     .framer-17pxhet,
-    .framer-3grTB .framer-17pxhet,
+    .framer-3grTB .framer-17pxhet {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: min-content !important;
+      flex: none !important;
+    }
     .framer-1icburl,
     .framer-3grTB .framer-1icburl {
+      display: flex !important;
       flex-direction: column !important;
-      gap: 20px !important;
+      gap: 16px !important;
       width: 100% !important;
+      height: auto !important;
+      min-height: min-content !important;
+      flex: none !important;
     }
     .framer-1icburl .ssr-variant {
       display: block !important;
       width: 100% !important;
       height: auto !important;
+      flex: none !important;
     }
     .framer-qz7woe,
     .framer-3grTB .framer-qz7woe {
@@ -568,18 +619,32 @@
       width: 100% !important;
       max-width: 100% !important;
       min-width: 0 !important;
-      height: clamp(200px, 45vw, 260px) !important;
+      height: clamp(200px, 48vw, 260px) !important;
       min-height: 200px !important;
       flex: none !important;
       border-radius: 14px !important;
+      overflow: hidden !important;
+      position: relative !important;
     }
     .framer-1jpvakt,
     .framer-3grTB .framer-1jpvakt {
+      display: flex !important;
+      flex-direction: column !important;
       width: 100% !important;
       max-width: 100% !important;
       min-width: 0 !important;
+      height: auto !important;
       flex: none !important;
       gap: 10px !important;
+    }
+    .framer-1b51bow,
+    .framer-3grTB .framer-1b51bow {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      height: auto !important;
+      flex: none !important;
+      gap: 6px !important;
     }
     .framer-szhlsh h2,
     .framer-szhlsh h3,
